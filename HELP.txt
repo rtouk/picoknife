@@ -1,0 +1,291 @@
+usage: picoknife {command} [args ...]
+
+  available commands:
+  
+    map               export map image from a .p8 file
+    sheet             export spritesheet image from a .p8 file
+    sprites           export sprites from a .p8 file to individual images
+    label             export label image from a .p8 file
+    ----------
+    setlabel          set a p8, p8.png, or HTML player's label image
+    sethtml           edit PICO-8 HTML player's properties
+    colorimage        apply 16-color palette to an image file
+    ----------
+    copy              copy a .p8 file with optional changes
+    ----------
+    version           display this software's version
+    help              show this help
+  
+------------------------------------------------------------------------------
+
+picoknife map {P8FILE} [OUTPUTFILE] [--scale N] [--cells CX CY CW CH] [--half]
+  [--transparent INDEX] [--alternate] [--palette COLORS] [--open] [--locate]
+  [--verbose] [--silent] [--help]
+
+    export map image from a .p8 file
+    
+    {required}
+      P8FILE         input .p8 source file
+      
+    [optional]
+      OUTPUTFILE     output image file
+      -----------
+      scale          upscaling factor (positive integer, such as 2)
+      cells          subsection of map: X Y Width Height (cells, not pixels)
+      half           export the upper (unshared) half of map (128x32 cells)
+      transparent    color index (0-15) to treat as transparent
+      alternate      use PICO-8's alternate/secret color palette
+      palette        use custom palette of (up to 16) comma-separated colors
+      -----------
+      open           open image file when finished
+      locate         locate image file when finished
+      -----------
+      verbose        show more information
+      silent         show no output (not even errors)
+      help           show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife sheet {P8FILE} [OUTPUTFILE] [--scale N] [--sub SN SW SH] [--half]
+  [--transparent INDEX] [--alternate] [--palette COLORS] [--open] [--locate]
+  [--verbose] [--silent] [--help]
+
+    export spritesheet image from a .p8 file
+    
+    {required}
+      P8FILE         input .p8 source file
+      
+    [optional]
+      OUTPUTFILE     output image file
+      -----------
+      scale          upscaling factor (positive integer, such as 2)
+      sub            subsection of sheet: FirstSprite N-Wide N-Tall
+      half           export the upper (unshared) half of sheet (16x8 sprites)
+      transparent    color index (0-15) to treat as transparent
+      alternate      use PICO-8's alternate/secret color palette
+      palette        use custom palette of (up to 16) comma-separated colors
+      -----------
+      open           open image file when finished
+      locate         locate image file when finished
+      -----------
+      verbose        show more information
+      silent         show no output (not even errors)
+      help           show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife sprites {P8FILE} [OUTPUTFILE] [--numbers RANGE] [--scale N] [--half]
+  [--transparent INDEX] [--alternate] [--palette COLORS] [--open] [--locate]
+  [--verbose] [--silent] [--help]
+
+    export sprites from a .p8 file to individual images
+    
+    {required}
+      P8FILE         input .p8 source file
+      
+    [optional]
+      OUTPUTFILE     output image file pattern (such as "sprite-%d.png")
+      numbers        specific sprites to export (such as "1,2,5-10")
+      -----------
+      scale          upscaling factor (positive integer, such as 2)
+      half           export sprites 0-127 (upper half of spritesheet)
+      transparent    color index (0-15) to treat as transparent
+      alternate      use PICO-8's alternate/secret color palette
+      palette        use custom palette of (up to 16) comma-separated colors
+      -----------
+      open           open (first) image file when finished
+      locate         locate (first) image file when finished
+      -----------
+      verbose        show more information
+      silent         show no output (not even errors)
+      help           show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife label {P8FILE} [OUTPUTFILE] [--scale N] [--transparent INDEX]
+  [--alternate] [--palette COLORS] [--open] [--locate] [--verbose] [--silent]
+  [--help]
+
+    export label image from a .p8 file
+    
+    {required}
+      P8FILE         input .p8 source file
+      
+    [optional]
+      OUTPUTFILE     output image file
+      -----------
+      scale          upscaling factor (positive integer, such as 2)
+      transparent    color index (0-15) to treat as transparent
+      alternate      use PICO-8's alternate/secret color palette
+      palette        use custom palette of (up to 16) comma-separated colors
+      -----------
+      open           open image file when finished
+      locate         locate image file when finished
+      -----------
+      verbose        show more information
+      silent         show no output (not even errors)
+      help           show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife setlabel {INPUTFILE} {IMAGEFILE} [OUTPUTFILE] [--fitPalette]
+  [--open] [--locate] [--verbose] [--silent] [--help]
+
+    set a p8, p8.png, or HTML player's label image
+    
+    {required}
+      INPUTFILE     a .p8 file, .p8.png cartridge, or .html player to modify
+      IMAGEFILE     a PNG, JPG, or BMP image (will be cropped to square)
+      
+    [optional]
+      OUTPUTFILE    output file (default: overwrite input)
+      ----------
+      fitPalette    constrain to PICO-8 standard colors (automatic for .p8)
+      ----------
+      open          open output file when finished
+      locate        locate output file when finished
+      ----------
+      verbose       show more information
+      silent        show no output (not even errors)
+      help          show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife sethtml {HTMLFILE} [OUTPUTFILE] [--title TEXT] [--headers FILE]
+  [--background COLOR] [--touchBackground COLOR] [--controls COLOR]
+  [--dpad COLOR] [--buttons COLOR] [--xButton COLOR] [--oButton COLOR]
+  [--startButton COLOR] [--noUp] [--noDown] [--noLeft] [--noRight] [--noDpad]
+  [--noX] [--noO] [--noStart] [--open] [--locate] [--verbose] [--silent]
+  [--help]
+
+    edit PICO-8 HTML player's properties
+    
+    {required}
+      HTMLFILE           input PICO-8 player HTML file
+      
+    [optional]
+      OUTPUTFILE         output HTML file (default: overwrite input)
+      ---------------
+      title              set the HTML page's <title> text
+      headers            append FILE's contents into HTML's <head> section
+      ---------------
+      background         set HTML page's background color
+      touchBackground    set background color for touchscreen mode
+      controls           set color for all controls
+      dpad               set color for touchscreen D-pad
+      buttons            set color for touchscreen buttons
+      xButton            set color for X button
+      oButton            set color for O button
+      startButton        set color for Start button
+      ---------------
+      noUp               hide Up arrow on D-pad
+      noDown             hide Down arrow on D-pad
+      noLeft             hide Left arrow on D-pad
+      noRight            hide Right arrow on D-pad
+      noDpad             hide entire D-pad
+      noX                hide X button
+      noO                hide O button
+      noStart            hide Start button
+      ---------------
+      open               open HTML file when finished
+      locate             locate HTML file when finished
+      ---------------
+      verbose            show more information
+      silent             show no output (not even errors)
+      help               show help for this command
+      
+    
+    a custom COLOR can be a PICO-8 color index (0-15, 128-143),
+    or a CSS/HTML color by its RGB hex or name (#FF0000 or 'red')
+    
+------------------------------------------------------------------------------
+
+picoknife colorimage {IMAGEFILE} [OUTPUTFILE] [--scale N] [--fit SIZE]
+  [--alternate] [--palette COLORS] [--open] [--locate] [--verbose] [--silent]
+  [--help]
+
+    apply 16-color palette to an image file
+    
+    {required}
+      IMAGEFILE     input image file (PNG, JPG, or BMP)
+      
+    [optional]
+      OUTPUTFILE    output image file (default: overwrite input)
+      ----------
+      scale         upscaling factor (positive integer, such as 2)
+      fit           resize image to square SIZE (before optional upscaling)
+      alternate     use PICO-8's alternate/secret color palette
+      palette       use custom palette of (up to 16) comma-separated colors
+      ----------
+      open          open image file when finished
+      locate        locate image file when finished
+      ----------
+      verbose       show more information
+      silent        show no output (not even errors)
+      help          show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife copy {SOURCEFILE} {DESTFILE} [--clear SECTION] [--delete SECTION]
+  [--yes] [--open] [--locate] [--verbose] [--silent] [--help]
+
+    copy a .p8 file with optional changes
+    
+    {required}
+      SOURCEFILE    input .p8 source file
+      DESTFILE      output .p8 source file (can be same as source)
+      
+    [optional]
+      clear         named section to clear (such as "sfx" or "map")
+      delete        named section to remove entirely
+      yes           confirm overwrite destFile without prompting
+      ----------
+      open          open .p8 file when finished
+      locate        locate .p8 file when finished
+      ----------
+      verbose       show more information
+      silent        show no output (not even errors)
+      help          show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife version [--help]
+
+    display this software's version
+    
+    [optional]
+      help    show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife help [COMMAND] [--all]
+
+    show this help
+    
+    [optional]
+      COMMAND    show help for a specific command
+      -------
+      all        show full help for all commands (--all or -a)
+      
+
+------------------------------------------------------------------------------
+
+general syntax:
+
+  an input/output FILE can be an absolute path,
+  or a path/name relative to the current directory
+  
+  a SPRITE NUMBER must be in the range 0-255
+  
+  a sprite number RANGE can be specified like printer pages ("1,2,5-10")
+  
+  map CELLS must be in the range (0,0) to (127,63)
+  
+  a color INDEX must be in the range 0-15
+  
+  a custom COLOR can be a PICO-8 color index (0-15, 128-143),
+  or a CSS/HTML color by its RGB hex or name (#FF0000 or 'red')
+  
+  
+  optional switches can be abbreviated like '-v' for '--verbose'
+
