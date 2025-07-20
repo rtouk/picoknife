@@ -31,6 +31,8 @@ Commands in [the latest version](./CHANGELOG.md):
   - `--palette`, `--alternate`, `--transparent`, `--scale` also apply here
 - **setlabel** – set the label image of a `.p8` file, `.p8.png` cartridge, or `.html` player
   - use `--fitPalette` to apply PICO-8 colors (otherwise, preserve full color!)
+- **settitle** – set the graphical title text of a `.p8.png` cartridge
+  - use `--subtitle` to optionally set a second line of text too
 - **sethtml** – modify an exported PICO-8 `.html` player page
   - use `--title` to set the page's title text
   - use `--headers` to include metadata headers from another file

@@ -8,6 +8,8 @@ usage: picoknife {command} [args ...]
     label             export label image from a .p8 file
     ----------
     setlabel          set a p8, p8.png, or HTML player's label image
+    ----------
+    settitle          set a p8.png's title text
     sethtml           edit PICO-8 HTML player's properties
     colorimage        apply 16-color palette to an image file
     ----------
@@ -141,6 +143,28 @@ picoknife setlabel {INPUTFILE} {IMAGEFILE} [OUTPUTFILE] [--fitPalette]
       OUTPUTFILE    output file (default: overwrite input)
       ----------
       fitPalette    constrain to PICO-8 standard colors (automatic for .p8)
+      ----------
+      open          open output file when finished
+      locate        locate output file when finished
+      ----------
+      verbose       show more information
+      silent        show no output (not even errors)
+      help          show help for this command
+      
+------------------------------------------------------------------------------
+
+picoknife settitle {INPUTFILE} [OUTPUTFILE] {--title TEXT} [--subtitle TEXT]
+  [--open] [--locate] [--verbose] [--silent] [--help]
+
+    set a p8.png's title text
+    
+    {required}
+      INPUTFILE     a .p8.png cartridge to modify
+      title         title text to apply
+      
+    [optional]
+      OUTPUTFILE    output file (default: overwrite input)
+      subtitle      optional subtitle text (second line)
       ----------
       open          open output file when finished
       locate        locate output file when finished
