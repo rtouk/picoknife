@@ -2,7 +2,7 @@
 
 Commandline tool for manipulating [PICO-8](https://www.lexaloffle.com/pico-8.php) files
 
-[Download for Windows](./picoknife-windows.zip?raw=true) · [Download for Mac](./picoknife-macos.zip?raw=true) · [Changelog](./CHANGELOG.md)
+[Download for Windows](./picoknife-windows.zip?raw=true) · [Download for Mac](./picoknife-macos.zip?raw=true) · [Download for Linux](./picoknife-linux.zip?raw=true) · [Changelog](./CHANGELOG.md)
 
 ## About
 
